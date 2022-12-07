@@ -1,0 +1,18 @@
+*body{
+ margin:0;
+ padding:0;
+ box-sizing: border-box;
+ 
+}
+
+#logout{
+   margin-left: -35px; 
+}
+#logout:hover{
+    color:rgb(115, 107, 96);
+    cursor: pointer;
+}
+
+.card{
+    cursor: pointer;
+}
