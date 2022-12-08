@@ -1,45 +1,39 @@
 
-// form handling
-
-const { data } = require("jquery");
-
 async function handleFormSubmit(event) {
-    event.preventDefault();
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
+  event.preventDefault();
+  const username = document.getElementById('username');
+  const password = document.getElementById('password');
 
-  try{
+  try {
     const getData = await fetch('https://dummyjson.com/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            username: username.value,
-            password: password.value,
-            // username: 'kminchelle',
-            // password: '0lelplR'
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value,
 
-        })
+
+      })
     })
 
     const data = await getData.json();
+    await localStorage.setItem('data', JSON.stringify(data));
 
-    console.log(data);
-    console.log(data.token,"token");
-    await localStorage.setItem('getData', JSON.stringify(data));
+
+    if (!data.token) {
+      alert("Invalid Email or Password");
+
+    } else {
+      redirect: window.location.replace("../contentPage/content.html")
+    }
+
   }
-  catch(e) {
-    console.log(e)
+  catch (e) {
+    console.log(e.message);
   }
 
- 
-  
-  // finally{
-  //   window.location = "../contentPage/Content.html";
-  //   return true;
-  // }
 
 }
-
 
 
 let form = document.querySelector('.form');
