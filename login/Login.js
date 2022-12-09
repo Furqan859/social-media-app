@@ -17,7 +17,7 @@ async function handleFormSubmit(event) {
     })
 
     const data = await getData.json();
-    await localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('data', JSON.stringify(data));
 
 
     if (!data.token) {
@@ -36,8 +36,11 @@ async function handleFormSubmit(event) {
 }
 
 
+
+
 let form = document.querySelector('.form');
 form.addEventListener('submit', handleFormSubmit);
+
 
 
 
