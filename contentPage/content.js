@@ -1,6 +1,7 @@
 const data = JSON.parse(localStorage.getItem('data'))
 console.log(data, "token");
 
+
 // user nav data
 
 // document.getElementById("name").innerHTML = data.username;
@@ -13,14 +14,6 @@ function userProfile(){
     redirect: window.location.replace("./userProfile.html")
 
 }
-
-const totalCount = document.getElementById("cart-data");
-var count = 0;
-
-const handleIncrement = () => {
-    count++;
-    totalCount.innerHTML = count;
-  };
 
 
 // function for logout
@@ -42,6 +35,19 @@ function LogOut() {
  search.value = data.product.title
  return data.product  
 }
+
+const totalCount = document.getElementById("cart-data");
+var count = 0; 
+
+const handleIncrement =(product) => {
+    console.log();
+     count++;
+     totalCount.innerHTML = count;
+    
+ 
+   };
+
+//    search bar
 
 
 // product function
@@ -91,7 +97,7 @@ async function productData() {
                 <hr class="my-0" />
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
-                    <a class="text-dark fw-bold" onclick="handleIncrement()">Add To Cart</a>
+                    <a class="text-dark fw-bold" onclick="handleIncrement(${product})">Add To Cart</a>
                     <button type="button" class="btn btn-primary" onclick="pagination()">Buy now</button>
                 </div>
         </div>
@@ -100,6 +106,7 @@ async function productData() {
             </div>
         </div>
     </div>`
+    
    
 
      })
@@ -108,4 +115,8 @@ async function productData() {
 }
 
 productData();
+
+
+
+
 
